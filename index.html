@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Simulasi TKA Kelas 6 - MIPK Al Ikhlas Tengaran</title>
+  <title>Simulasi TKA Lengkap - Natasha (MIPK Al Ikhlas Tengaran)</title>
   <style>
     :root {
       --primary: #0f5132;
@@ -31,7 +31,7 @@
     body {
       background-color: var(--bg);
       color: var(--text);
-      line-height: 1.5;
+      line-height: 1.55;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -45,10 +45,12 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.14);
     }
 
     .header-top {
+      max-width: 720px;
+      margin: 0 auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -91,7 +93,7 @@
     /* Container */
     .container {
       width: 100%;
-      max-width: 680px;
+      max-width: 720px;
       margin: 0 auto;
       padding: 16px;
       flex: 1;
@@ -257,15 +259,40 @@
     }
 
     /* Confirm Table */
+    .student-card {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--primary-bg);
+      border: 1px solid #bbf7d0;
+      border-radius: 12px;
+      padding: 12px 14px;
+      margin-bottom: 14px;
+    }
+
+    .avatar-circle {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #fff;
+      font-weight: 800;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
     .info-table {
       width: 100%;
       border-collapse: collapse;
       margin-bottom: 16px;
-      font-size: 14px;
+      font-size: 13.5px;
     }
 
     .info-table td {
-      padding: 9px 6px;
+      padding: 8px 6px;
       border-bottom: 1px solid #f1f5f9;
     }
 
@@ -276,6 +303,16 @@
 
     .info-table td:last-child {
       font-weight: 600;
+    }
+
+    .rule-box {
+      background: #fffbeb;
+      border: 1px solid #fde68a;
+      border-radius: 10px;
+      padding: 12px;
+      font-size: 12.5px;
+      color: #78350f;
+      margin-bottom: 14px;
     }
 
     /* Exam Controls Bar */
@@ -304,6 +341,11 @@
       font-size: 12px;
       padding: 5px 10px;
       border-radius: 8px;
+    }
+
+    .subject-pill.math {
+      background: #ede9fe;
+      color: #5b21b6;
     }
 
     .font-controls {
@@ -479,7 +521,7 @@
     }
 
     .bottom-nav-inner {
-      max-width: 680px;
+      max-width: 720px;
       margin: 0 auto;
       display: grid;
       grid-template-columns: 1fr auto 1fr;
@@ -502,10 +544,10 @@
     .modal-card {
       background: #fff;
       width: 100%;
-      max-width: 420px;
+      max-width: 460px;
       border-radius: 16px;
       padding: 20px;
-      max-height: 85vh;
+      max-height: 88vh;
       overflow-y: auto;
     }
 
@@ -513,14 +555,23 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
+    }
+
+    .grid-section-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--muted);
+      margin: 10px 0 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
     }
 
     .grid-numbers {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
-      gap: 10px;
-      margin-bottom: 16px;
+      gap: 8px;
+      margin-bottom: 12px;
     }
 
     .num-box {
@@ -529,7 +580,7 @@
       border: 1.5px solid var(--border);
       background: #fff;
       font-weight: 700;
-      font-size: 15px;
+      font-size: 14px;
       cursor: pointer;
       display: flex;
       align-items: center;
@@ -559,7 +610,7 @@
       gap: 12px;
       font-size: 12px;
       color: var(--muted);
-      margin-bottom: 16px;
+      margin: 12px 0 16px;
     }
 
     .legend span {
@@ -587,8 +638,8 @@
     }
 
     .score-circle {
-      width: 104px;
-      height: 104px;
+      width: 108px;
+      height: 108px;
       border-radius: 50%;
       background: rgba(255, 255, 255, 0.16);
       border: 4px solid #fff;
@@ -600,7 +651,7 @@
     }
 
     .score-value {
-      font-size: 32px;
+      font-size: 34px;
       font-weight: 800;
       line-height: 1;
     }
@@ -608,6 +659,7 @@
     .score-label {
       font-size: 11px;
       opacity: 0.9;
+      margin-top: 2px;
     }
 
     .stat-grid {
@@ -632,9 +684,38 @@
     }
 
     .stat-box .val {
-      font-size: 18px;
+      font-size: 20px;
       font-weight: 800;
       color: var(--primary);
+    }
+
+    .stat-box .sub {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .filter-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      padding: 6px 12px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      background: #fff;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .filter-btn.active {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
     }
 
     .review-item {
@@ -649,6 +730,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 8px;
       margin-bottom: 8px;
     }
 
@@ -657,6 +739,7 @@
       font-weight: 700;
       padding: 3px 9px;
       border-radius: 12px;
+      white-space: nowrap;
     }
 
     .badge-correct {
@@ -691,11 +774,11 @@
   <header class="cbt-header">
     <div class="header-top">
       <div>
-        <div class="brand-title">SIMULASI TKA KELAS 6</div>
-        <div class="brand-sub">MIPK Al Ikhlas Tengaran</div>
+        <div class="brand-title">SIMULASI TKA LENGKAP — NATASHA</div>
+        <div class="brand-sub">MIPK Al Ikhlas Tengaran • Kelas 6</div>
       </div>
       <div id="headerRight" class="hidden" style="display:flex; align-items:center; gap:8px;">
-        <div id="timerDisplay" class="timer-badge">20:00</div>
+        <div id="timerDisplay" class="timer-badge">60:00</div>
         <button type="button" class="btn btn-sm" style="background:#fff; color:#0f5132;" onclick="openGridModal()">Daftar Soal</button>
       </div>
     </div>
@@ -705,36 +788,36 @@
   <main id="screenLogin" class="container">
     <div class="card">
       <div class="login-banner">
-        <span class="school-badge">LATIHAN UJIAN BERBASIS HP</span>
+        <span class="school-badge">UJIAN BERBASIS HP (CBT) • PAKET LENGKAP</span>
         <h1>Login Peserta TKA</h1>
-        <p>Silakan masukkan NISN dan Password untuk memulai latihan</p>
+        <p>Masukkan NISN dan Password untuk memulai latihan lengkap</p>
       </div>
 
       <div id="loginError" class="alert-error hidden">
-        NISN atau Password salah. Gunakan NISN <strong>123456</strong> dan Password <strong>123456</strong>.
+        NISN atau Password belum sesuai. Gunakan NISN <strong>123456</strong> dan Password <strong>123456</strong>.
       </div>
 
       <form onsubmit="handleLogin(event)">
         <div class="form-group">
           <label for="inputNisn">Nomor Induk Siswa Nasional (NISN)</label>
-          <input type="text" id="inputNisn" class="form-control" inputmode="numeric" placeholder="Masukkan NISN (contoh: 123456)" required />
+          <input type="text" id="inputNisn" class="form-control" inputmode="numeric" placeholder="Masukkan NISN (123456)" required />
         </div>
 
         <div class="form-group">
           <label for="inputPassword">Password</label>
           <div class="input-wrap">
-            <input type="password" id="inputPassword" class="form-control" placeholder="Masukkan Password (contoh: 123456)" required />
+            <input type="password" id="inputPassword" class="form-control" placeholder="Masukkan Password (123456)" required />
             <button type="button" class="toggle-pw" onclick="togglePassword()">Lihat</button>
           </div>
         </div>
 
-        <button type="submit" class="btn btn-primary btn-block" style="margin-top:6px;">LOGIN</button>
+        <button type="submit" class="btn btn-primary btn-block" style="margin-top:6px;">LOGIN PESERTA</button>
       </form>
 
       <div class="demo-hint">
         <div style="margin-bottom:8px;">
-          <strong>Panduan Orang Tua / Siswa:</strong><br/>
-          Untuk latihan simulasi ini, masukkan NISN: <strong>123456</strong> dan Password: <strong>123456</strong>.
+          <strong>Akun Latihan Natasha:</strong><br/>
+          NISN: <strong>123456</strong> &nbsp;|&nbsp; Password: <strong>123456</strong>
         </div>
         <button type="button" class="btn btn-outline btn-sm" onclick="fillDemoCredentials()">Isi Otomatis (123456)</button>
       </div>
@@ -745,38 +828,44 @@
   <section id="screenConfirm" class="container hidden">
     <div class="card">
       <h2 style="font-size:18px; margin-bottom:4px; color:var(--primary);">Konfirmasi Data Peserta</h2>
-      <p style="font-size:13px; color:var(--muted); margin-bottom:14px;">Pastikan data di bawah ini sudah sesuai sebelum menekan tombol Mulai.</p>
+      <p style="font-size:13px; color:var(--muted); margin-bottom:14px;">Periksa identitas dan rincian paket ujian sebelum menekan tombol Mulai.</p>
+
+      <div class="student-card">
+        <div class="avatar-circle">N</div>
+        <div>
+          <div style="font-weight:800; font-size:15px; color:var(--primary);">NATASHA</div>
+          <div style="font-size:12.5px; color:#334155;">NISN: 123456 • Kelas 6 MIPK Al Ikhlas Tengaran</div>
+        </div>
+      </div>
 
       <table class="info-table">
         <tr>
-          <td>NISN / Username</td>
-          <td>123456</td>
-        </tr>
-        <tr>
-          <td>Nama Peserta</td>
-          <td>SISWA KELAS 6 (SIMULASI)</td>
-        </tr>
-        <tr>
-          <td>Madrasah</td>
-          <td>MIPK AL IKHLAS TENGARAN</td>
+          <td>Paket Simulasi</td>
+          <td>Paket Lengkap TKA (Full Set)</td>
         </tr>
         <tr>
           <td>Mata Uji</td>
-          <td>Bahasa Indonesia &amp; Matematika</td>
+          <td>Bahasa Indonesia (No. 1–15)<br/>Matematika (No. 16–30)</td>
         </tr>
         <tr>
-          <td>Jumlah Soal</td>
-          <td>10 Soal (PG, Kompleks, Kategori)</td>
+          <td>Total Soal</td>
+          <td>30 Soal (PG, Kompleks, Kategori)</td>
         </tr>
         <tr>
           <td>Alokasi Waktu</td>
-          <td>20 Menit</td>
+          <td>60 Menit (1 Jam)</td>
         </tr>
       </table>
 
+      <div class="rule-box">
+        <strong>Tips Pengerjaan untuk Natasha:</strong><br/>
+        • Siapkan kertas buram dan pensil untuk menghitung soal Matematika (No. 16–30).<br/>
+        • Perhatikan tanda perintah soal: memilih <strong>1 jawaban</strong>, <strong>lebih dari 1 jawaban</strong>, atau <strong>tabel Benar/Salah</strong>.
+      </div>
+
       <div class="form-group">
-        <label for="inputToken">Token Ujian (Otomatis Terisi)</label>
-        <input type="text" id="inputToken" class="form-control" value="TKA2026" readonly style="background:#f8fafc; font-weight:700; letter-spacing:1px; color:var(--primary);" />
+        <label for="inputToken">Token Ujian</label>
+        <input type="text" id="inputToken" class="form-control" value="TKA2026" readonly style="background:#f8fafc; font-weight:700; letter-spacing:1.5px; color:var(--primary);" />
       </div>
 
       <div style="display:flex; gap:10px; margin-top:16px;">
@@ -789,8 +878,8 @@
   <!-- SCREEN 3: LEMBAR UJIAN -->
   <section id="screenExam" class="container hidden">
     <div class="exam-toolbar">
-      <div style="display:flex; align-items:center; gap:6px;">
-        <span id="qNumberBadge" class="q-number-pill">Soal No. 1 / 10</span>
+      <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap;">
+        <span id="qNumberBadge" class="q-number-pill">Soal No. 1 / 30</span>
         <span id="qSubjectBadge" class="subject-pill">Bahasa Indonesia</span>
       </div>
       <div class="font-controls">
@@ -821,22 +910,24 @@
   <!-- SCREEN 4: HASIL & PEMBAHASAN -->
   <section id="screenResult" class="container hidden">
     <div class="score-hero">
-      <div style="font-size:13px; font-weight:600; opacity:0.95;">HASIL SIMULASI TKA KELAS 6</div>
+      <div style="font-size:13px; font-weight:700; opacity:0.95;">HASIL SIMULASI TKA LENGKAP — NATASHA</div>
       <div class="score-circle">
         <div id="finalScoreText" class="score-value">0</div>
-        <div class="score-label">NILAI AKHIR</div>
+        <div class="score-label">NILAI (SKALA 100)</div>
       </div>
-      <div id="scoreFeedbackText" style="font-size:15px; font-weight:700;"></div>
+      <div id="scoreFeedbackText" style="font-size:14.5px; font-weight:700;"></div>
     </div>
 
     <div class="stat-grid">
       <div class="stat-box">
-        <div class="title">Bahasa Indonesia (5 Soal)</div>
-        <div id="scoreIndoText" class="val">0 / 50</div>
+        <div class="title">Bahasa Indonesia (15 Soal)</div>
+        <div id="scoreIndoText" class="val">0</div>
+        <div id="subIndoText" class="sub">Skor 0 / 150 poin</div>
       </div>
       <div class="stat-box">
-        <div class="title">Matematika (5 Soal)</div>
-        <div id="scoreMathText" class="val">0 / 50</div>
+        <div class="title">Matematika (15 Soal)</div>
+        <div id="scoreMathText" class="val">0</div>
+        <div id="subMathText" class="sub">Skor 0 / 150 poin</div>
       </div>
     </div>
 
@@ -846,7 +937,12 @@
     </div>
 
     <div class="card">
-      <h3 style="font-size:16px; margin-bottom:12px; color:var(--primary);">Kunci Jawaban &amp; Pembahasan</h3>
+      <h3 style="font-size:16px; margin-bottom:10px; color:var(--primary);">Kunci Jawaban &amp; Pembahasan</h3>
+      <div class="filter-tabs">
+        <button type="button" class="filter-btn active" id="filterAll" onclick="setReviewFilter('all', 'filterAll')">Semua (30)</button>
+        <button type="button" class="filter-btn" id="filterWrong" onclick="setReviewFilter('wrong', 'filterWrong')">Perlu Dipelajari (Belum Sempurna)</button>
+        <button type="button" class="filter-btn" id="filterMath" onclick="setReviewFilter('math', 'filterMath')">Khusus Matematika</button>
+      </div>
       <div id="reviewContainer"></div>
     </div>
   </section>
@@ -855,16 +951,20 @@
   <div id="gridModal" class="modal-backdrop hidden" onclick="closeModalOnBg(event)">
     <div class="modal-card">
       <div class="modal-header">
-        <h3 style="font-size:16px;">Daftar Nomor Soal</h3>
+        <h3 style="font-size:16px;">Peta Nomor Soal (30 Soal)</h3>
         <button type="button" class="btn btn-outline btn-sm" onclick="closeGridModal()">Tutup</button>
       </div>
 
-      <div id="questionGrid" class="grid-numbers"></div>
+      <div class="grid-section-title">Bahasa Indonesia (No. 1 – 15)</div>
+      <div id="questionGridIndo" class="grid-numbers"></div>
+
+      <div class="grid-section-title">Matematika (No. 16 – 30)</div>
+      <div id="questionGridMath" class="grid-numbers"></div>
 
       <div class="legend">
-        <span><i class="dot" style="background:var(--primary-light); border-color:var(--primary-light);"></i> Sudah Dijawab</span>
+        <span><i class="dot" style="background:var(--primary-light); border-color:var(--primary-light);"></i> Dijawab</span>
         <span><i class="dot" style="background:var(--warning); border-color:#eab308;"></i> Ragu-ragu</span>
-        <span><i class="dot" style="background:#fff;"></i> Belum Dijawab</span>
+        <span><i class="dot" style="background:#fff;"></i> Kosong</span>
       </div>
 
       <button type="button" class="btn btn-danger btn-block" onclick="confirmSubmitExam()">Selesai &amp; Kumpulkan Jawaban</button>
@@ -885,165 +985,465 @@
 
   <script>
     const QUESTIONS = [
+      // ================= BAHASA INDONESIA (1 - 15) =================
       {
         id: 1,
         subject: "Bahasa Indonesia",
         type: "single",
-        passageTitle: "Mengenal Lebah Trigona, Si Penghasil Madu Klanceng",
-        passage: "Berbeda dengan lebah madu pada umumnya yang memiliki sengat, lebah Trigona atau lebah klanceng tidak menyengat manusia. Ukurannya pun sangat kecil, hanya sekitar 3 hingga 4 milimeter, menyerupai semut bersayap. Karena tidak berbahaya, lebah ini banyak dibudidayakan di pekarangan rumah warga di lereng Gunung Merbabu dan sekitarnya.<br><br>Lebah klanceng menyimpan madunya bukan di sarang berbentuk segi enam, melainkan di dalam kantong-kantong kecil bulat yang terbuat dari propolis. Rasa madu klanceng cenderung asam manis karena lebah ini mengisap nektar dari berbagai bunga liar dan getah tumbuhan. Meskipun jumlah madu yang dihasilkan lebih sedikit dibanding lebah biasa, kandungan propolis dan antioksidan pada madu klanceng jauh lebih tinggi sehingga bermanfaat untuk menjaga daya tahan tubuh.",
-        prompt: "Berdasarkan teks tersebut, mengapa lebah klanceng aman dibudidayakan di pekarangan rumah warga?",
+        passageTitle: "Budidaya Ikan Nila Sistem Bioflok di Lereng Merbabu",
+        passage: "Budidaya ikan nila menggunakan kolam terpal bulat dengan sistem bioflok semakin diminati warga di sekitar Kecamatan Tengaran. Sistem bioflok memanfaatkan mikroorganisme baik untuk mengolah limbah kotoran ikan menjadi gumpalan pakan alami yang kaya protein.<br><br>Dengan teknik ini, pembudidaya tidak perlu sering menguras air kolam sehingga sangat hemat air. Selain itu, kepadatan tebar ikan bisa lebih tinggi dibandingkan kolam tanah biasa, sehingga hasil panen jauh lebih melimpah meski lahan pekarangan terbatas.",
+        prompt: "Mengapa sistem bioflok dinilai lebih hemat air dibandingkan kolam biasa?",
         options: [
-          { key: "A", text: "Ukurannya sangat kecil seperti semut bersayap." },
-          { key: "B", text: "Lebah klanceng tidak memiliki sengat yang membahayakan manusia." },
-          { key: "C", text: "Sarangnya berbentuk segi enam yang rapi dan tertutup." },
-          { key: "D", text: "Lebah ini hanya mengisap getah tumbuhan tertentu." }
+          { key: "A", text: "Karena kolam terpal bulat tidak mudah bocor saat musim kemarau." },
+          { key: "B", text: "Karena mikroorganisme mengolah limbah sehingga air kolam tidak perlu sering dikuras." },
+          { key: "C", text: "Karena ikan nila tidak membutuhkan banyak air untuk bertumbuh." },
+          { key: "D", text: "Karena pakan pabrik yang diberikan langsung larut di dalam air." }
         ],
         correct: "B",
-        explanation: "Pada paragraf pertama dijelaskan secara langsung bahwa lebah Trigona (klanceng) tidak menyengat manusia sehingga tidak berbahaya dan aman dibudidayakan di pekarangan rumah."
+        explanation: "Pada paragraf kedua disebutkan bahwa sistem bioflok memanfaatkan mikroorganisme untuk mengolah limbah sehingga pembudidaya tidak perlu sering menguras air kolam."
       },
       {
         id: 2,
         subject: "Bahasa Indonesia",
         type: "multiple",
-        passageTitle: "Mengenal Lebah Trigona, Si Penghasil Madu Klanceng",
-        passage: "Lebah klanceng menyimpan madunya bukan di sarang berbentuk segi enam, melainkan di dalam kantong-kantong kecil bulat yang terbuat dari propolis. Rasa madu klanceng cenderung asam manis karena lebah ini mengisap nektar dari berbagai bunga liar dan getah tumbuhan. Meskipun jumlah madu yang dihasilkan lebih sedikit dibanding lebah biasa, kandungan propolis dan antioksidan pada madu klanceng jauh lebih tinggi sehingga bermanfaat untuk menjaga daya tahan tubuh.",
-        prompt: "Manakah pernyataan yang sesuai dengan isi bacaan tentang madu klanceng? (Pilih semua jawaban yang benar)",
+        passageTitle: "Budidaya Ikan Nila Sistem Bioflok di Lereng Merbabu",
+        passage: "Budidaya ikan nila menggunakan kolam terpal bulat dengan sistem bioflok semakin diminati warga di sekitar Kecamatan Tengaran. Sistem bioflok memanfaatkan mikroorganisme baik untuk mengolah limbah kotoran ikan menjadi gumpalan pakan alami yang kaya protein. Dengan teknik ini, pembudidaya tidak perlu sering menguras air kolam sehingga sangat hemat air. Selain itu, kepadatan tebar ikan bisa lebih tinggi dibandingkan kolam tanah biasa, sehingga hasil panen jauh lebih melimpah meski lahan pekarangan terbatas.",
+        prompt: "Manakah keunggulan budidaya ikan nila sistem bioflok berdasarkan teks tersebut? (Pilih semua jawaban yang benar)",
         options: [
-          { key: "1", text: "Madu klanceng disimpan di dalam kantong-kantong kecil dari propolis." },
-          { key: "2", text: "Jumlah madu klanceng yang dipanen lebih banyak daripada lebah biasa." },
-          { key: "3", text: "Rasa madu klanceng perpaduan asam dan manis." },
-          { key: "4", text: "Kandungan antioksidan pada madu klanceng lebih tinggi dibanding madu biasa." }
+          { key: "1", text: "Limbah kotoran ikan diolah menjadi pakan alami berprotein." },
+          { key: "2", text: "Dapat diterapkan pada lahan pekarangan yang terbatas." },
+          { key: "3", text: "Tidak membutuhkan listrik atau peralatan apa pun." },
+          { key: "4", text: "Hasil panen melimpah karena kepadatan tebar ikan lebih tinggi." }
         ],
-        correct: ["1", "3", "4"],
-        explanation: "Pernyataan 1, 3, dan 4 sesuai dengan bacaan. Pernyataan 2 keliru karena teks menyatakan jumlah madu yang dihasilkan justru lebih sedikit dibanding lebah biasa."
+        correct: ["1", "2", "4"],
+        explanation: "Pernyataan 1, 2, dan 4 sesuai dengan isi bacaan. Pernyataan 3 tidak disebutkan dalam teks."
       },
       {
         id: 3,
         subject: "Bahasa Indonesia",
-        type: "single",
-        passageTitle: "Sepeda Rantai Karatan",
-        passage: "Pagi itu, Raka menatap sepeda tuanya dengan wajah murung. Rantainya berbunyi nyaring setiap kali dikayuh karena belum diberi pelumas. Teman-temannya sudah melaju kencang di depan menuju lapangan desa. Raka sempat ingin pulang saja, tetapi ia teringat janjinya untuk menjadi penjaga gawang tim kelas 6.<br><br>Dengan penuh tekad, Raka terus mengayuh sepedanya perlahan sambil mengatur napas. Setibanya di lapangan, teman-temannya menyambut Raka dengan sorak gembira. Berkat ketangguhan Raka menjaga gawang, tim kelas 6 berhasil menahan imbang tim lawan. Pulang dari lapangan, Ayah tersenyum bangga melihat kegigihan Raka dan segera membantu membersihkan serta memberi pelumas pada rantai sepeda Raka.",
-        prompt: "Sikap terpuji yang ditunjukkan tokoh Raka dalam cerita tersebut adalah ....",
-        options: [
-          { key: "A", text: "mudah menyerah saat menghadapi kesulitan di jalan" },
-          { key: "B", text: "menepati janji dan pantang menyerah meski terkendala" },
-          { key: "C", text: "selalu mengandalkan bantuan ayah untuk memperbaiki sepeda" },
-          { key: "D", text: "menyalahkan teman-teman yang berangkat lebih dulu" }
+        type: "category",
+        colA: "Benar",
+        colB: "Salah",
+        passageTitle: "Budidaya Ikan Nila Sistem Bioflok di Lereng Merbabu",
+        passage: "Sistem bioflok memanfaatkan mikroorganisme baik untuk mengolah limbah kotoran ikan menjadi gumpalan pakan alami yang kaya protein. Dengan teknik ini, pembudidaya tidak perlu sering menguras air kolam sehingga sangat hemat air.",
+        prompt: "Tentukan apakah pernyataan berikut Benar atau Salah berdasarkan bacaan di atas!",
+        statements: [
+          { key: "S1", text: "Gumpalan bioflok berasal dari limbah kotoran ikan yang diolah mikroorganisme.", correct: "Benar" },
+          { key: "S2", text: "Kolam sistem bioflok wajib dikuras setiap dua hari sekali agar ikan sehat.", correct: "Salah" },
+          { key: "S3", text: "Kepadatan tebar ikan pada sistem bioflok lebih tinggi dari kolam tanah biasa.", correct: "Benar" }
         ],
-        correct: "B",
-        explanation: "Meskipun rantai sepedanya bermasalah dan ia tertinggal, Raka tetap gigih mengayuh demi menepati janjinya kepada tim kelas 6."
+        explanation: "Pernyataan 1 dan 3 sesuai dengan teks (Benar). Pernyataan 2 Salah karena air kolam justru tidak perlu sering dikuras."
       },
       {
         id: 4,
         subject: "Bahasa Indonesia",
-        type: "category",
-        colA: "Benar",
-        colB: "Salah",
-        passageTitle: "Sepeda Rantai Karatan",
-        passage: "Raka sempat ingin pulang saja, tetapi ia teringat janjinya untuk menjadi penjaga gawang tim kelas 6. Dengan penuh tekad, Raka terus mengayuh sepedanya perlahan sambil mengatur napas. Pulang dari lapangan, Ayah tersenyum bangga melihat kegigihan Raka dan segera membantu membersihkan serta memberi pelumas pada rantai sepeda Raka.",
-        prompt: "Tentukan apakah setiap pernyataan berikut Benar atau Salah berdasarkan cerita di atas!",
-        statements: [
-          { key: "S1", text: "Raka mengurungkan niatnya bermain bola dan memilih pulang ke rumah.", correct: "Benar" === "Salah" ? "Benar" : "Salah" },
-          { key: "S2", text: "Rantai sepeda Raka berbunyi nyaring karena belum diberi pelumas.", correct: "Benar" },
-          { key: "S3", text: "Ayah mengapresiasi kegigihan Raka dengan membantu merawat sepedanya.", correct: "Benar" }
+        type: "single",
+        passageTitle: "Lomba Kebersihan Kelas",
+        passage: "Menjelang peringatan Hari Amal Bakti madrasah, kelas 6A sepakat mengikuti lomba kebersihan kelas. Salma ditunjuk sebagai koordinator. Awalnya, beberapa teman laki-laki enggan menyapu halaman depan kelas karena malu dilihat adik kelas.<br><br>Salma tidak marah. Ia justru mengambil sapu lidi lebih dulu dan mengajak teman-temannya dengan ramah, 'Ayo kita kerjakan bersama biar cepat selesai, nanti kita istirahat bareng.' Melihat sikap Salma yang ringan tangan, teman-temannya pun segera ikut membantu hingga kelas 6A tampak bersih dan rapi.",
+        prompt: "Keteladanan tokoh Salma dalam cerita tersebut adalah ....",
+        options: [
+          { key: "A", text: "melaporkan teman yang malas kepada wali kelas" },
+          { key: "B", text: "memberi contoh langsung dan mengajak bekerja sama dengan santun" },
+          { key: "C", text: "mengerjakan seluruh tugas sendirian tanpa bantuan orang lain" },
+          { key: "D", text: "memarahi teman-temannya agar segera menyapu halaman" }
         ],
-        explanation: "Pernyataan 1 Salah karena Raka tetap datang ke lapangan dan menjadi penjaga gawang. Pernyataan 2 dan 3 Benar sesuai isi cerita."
+        correct: "B",
+        explanation: "Salma tidak marah, melainkan langsung memberi teladan dengan mengambil sapu terlebih dahulu dan mengajak teman-temannya secara ramah."
       },
       {
         id: 5,
         subject: "Bahasa Indonesia",
         type: "single",
-        passageTitle: "Gerakan Madrasah Hemat Energi",
-        passage: "Seluruh warga madrasah diimbau untuk mematikan lampu ruang kelas dan kipas angin apabila pembelajaran telah selesai atau saat meninggalkan ruangan. Selain menghemat biaya listrik, kebiasaan sederhana ini turut menjaga kelestarian lingkungan dan mencegah risiko korsleting listrik.",
-        prompt: "Makna kata 'diimbau' pada pengumuman tersebut adalah ....",
+        passageTitle: "Lomba Kebersihan Kelas",
+        passage: "Melihat sikap Salma yang ringan tangan, teman-temannya pun segera ikut membantu hingga kelas 6A tampak bersih dan rapi.",
+        prompt: "Arti ungkapan 'ringan tangan' pada kalimat tersebut adalah ....",
         options: [
-          { key: "A", text: "dilarang keras" },
-          { key: "B", text: "diajak atau diminta dengan sungguh-sungguh" },
-          { key: "C", text: "dihukum jika melanggar" },
-          { key: "D", text: "dibiarkan memilih sendiri" }
+          { key: "A", text: "suka memukul" },
+          { key: "B", text: "suka menolong atau rajin bekerja" },
+          { key: "C", text: "mudah lelah saat bekerja" },
+          { key: "D", text: "suka memerintah teman" }
         ],
         correct: "B",
-        explanation: "Menurut KBBI, kata 'imbau' (diimbau) bermakna diajak, diminta, atau diserukan dengan sungguh-sungguh untuk melakukan sesuatu."
+        explanation: "Dalam konteks positif tersebut, ungkapan 'ringan tangan' bermakna rajin bekerja dan suka membantu."
       },
       {
         id: 6,
-        subject: "Matematika",
-        type: "single",
-        prompt: "Toko Buku Amanah memberikan diskon 20% untuk semua alat tulis. Harga satu paket buku tulis adalah Rp40.000,00. Jika Fatih membeli 2 paket buku tulis dan membayar dengan selembar uang Rp100.000,00, berapa uang kembalian yang diterima Fatih?",
-        options: [
-          { key: "A", text: "Rp32.000,00" },
-          { key: "B", text: "Rp36.000,00" },
-          { key: "C", text: "Rp44.000,00" },
-          { key: "D", text: "Rp64.000,00" }
+        subject: "Bahasa Indonesia",
+        type: "category",
+        colA: "Sesuai",
+        colB: "Tidak Sesuai",
+        passageTitle: "Lomba Kebersihan Kelas",
+        passage: "Menjelang peringatan Hari Amal Bakti madrasah, kelas 6A sepakat mengikuti lomba kebersihan kelas. Salma ditunjuk sebagai koordinator. Awalnya, beberapa teman laki-laki enggan menyapu halaman depan kelas karena malu dilihat adik kelas. Salma tidak marah. Ia justru mengambil sapu lidi lebih dulu dan mengajak teman-temannya dengan ramah.",
+        prompt: "Tentukan Sesuai atau Tidak Sesuai untuk setiap pernyataan berikut berdasarkan cerita!",
+        statements: [
+          { key: "S1", text: "Lomba kebersihan diadakan dalam rangka Hari Amal Bakti madrasah.", correct: "Sesuai" },
+          { key: "S2", text: "Salma memaksa teman-temannya menyapu sambil membentak.", correct: "Tidak Sesuai" },
+          { key: "S3", text: "Akhirnya seluruh siswa kelas 6A bekerja sama membersihkan kelas.", correct: "Sesuai" }
         ],
-        correct: "B",
-        explanation: "Harga 2 paket = 2 x Rp40.000 = Rp80.000. Diskon 20% = 20/100 x Rp80.000 = Rp16.000. Harga yang harus dibayar = Rp80.000 - Rp16.000 = Rp64.000. Kembalian = Rp100.000 - Rp64.000 = Rp36.000,00."
+        explanation: "Pernyataan 1 dan 3 sesuai dengan isi cerita, sedangkan pernyataan 2 bertentangan karena Salma mengajak dengan ramah."
       },
       {
         id: 7,
-        subject: "Matematika",
+        subject: "Bahasa Indonesia",
         type: "single",
-        prompt: "Di madrasah, kegiatan ekstrakurikuler Pramuka diadakan setiap 6 hari sekali, sedangkan latihan Hadroh diadakan setiap 8 hari sekali. Jika pada hari Selasa kedua kegiatan tersebut dilaksanakan bersamaan, pada hari apakah keduanya akan dilaksanakan bersamaan lagi untuk berikutnya?",
+        passageTitle: "Infografis: Bijak Menggunakan Gawai untuk Pelajar",
+        passage: "<strong>ATURAN SEHAT MENGGUNAKAN HP:</strong><br/>1. Gunakan HP maksimal 2 jam per hari di luar keperluan belajar.<br/>2. Jaga jarak pandang mata dengan layar minimal 30 cm.<br/>3. Hentikan penggunaan HP 1 jam sebelum waktu tidur malam.<br/>4. Istirahatkan mata setiap 20 menit dengan melihat benda jauh selama 20 detik.",
+        prompt: "Tujuan utama dibuatnya infografis tersebut adalah ....",
         options: [
-          { key: "A", text: "Kamis" },
-          { key: "B", text: "Jumat" },
-          { key: "C", text: "Sabtu" },
-          { key: "D", text: "Minggu" }
+          { key: "A", text: "melarang pelajar memiliki HP sendiri di rumah" },
+          { key: "B", text: "mengajak pelajar menggunakan HP secara sehat agar mata dan waktu istirahat terjaga" },
+          { key: "C", text: "mempromosikan aplikasi belajar terbaru untuk siswa kelas 6" },
+          { key: "D", text: "mewajibkan pelajar tidur lebih dari 10 jam setiap malam" }
         ],
         correct: "B",
-        explanation: "KPK dari 6 dan 8 adalah 24 (bersamaan setiap 24 hari). Karena 1 minggu = 7 hari, maka 24 : 7 = 3 minggu sisa 3 hari. Tiga hari setelah hari Selasa adalah hari Jumat (Rabu, Kamis, Jumat)."
+        explanation: "Infografis memuat panduan batasan waktu, jarak pandang mata, dan waktu berhenti memakai HP sebelum tidur demi kesehatan pelajar."
       },
       {
         id: 8,
-        subject: "Matematika",
+        subject: "Bahasa Indonesia",
         type: "multiple",
-        prompt: "Pak Ahmad memiliki bak penampungan air berbentuk balok dengan panjang 100 cm, lebar 50 cm, dan tinggi 60 cm. Bak tersebut saat ini baru terisi air setengah bagian. Pilih semua pernyataan yang benar! (Catatan: 1 liter = 1.000 cm³)",
+        passageTitle: "Infografis: Bijak Menggunakan Gawai untuk Pelajar",
+        passage: "<strong>ATURAN SEHAT MENGGUNAKAN HP:</strong><br/>1. Gunakan HP maksimal 2 jam per hari di luar keperluan belajar.<br/>2. Jaga jarak pandang mata dengan layar minimal 30 cm.<br/>3. Hentikan penggunaan HP 1 jam sebelum waktu tidur malam.<br/>4. Istirahatkan mata setiap 20 menit dengan melihat benda jauh selama 20 detik.",
+        prompt: "Berdasarkan infografis tersebut, kebiasaan manakah yang dianjurkan? (Pilih semua jawaban yang benar)",
         options: [
-          { key: "1", text: "Volume maksimal bak air jika terisi penuh adalah 300 liter." },
-          { key: "2", text: "Volume air di dalam bak saat ini adalah 150 liter." },
-          { key: "3", text: "Dibutuhkan tambahan 200 liter air agar bak terisi penuh." },
-          { key: "4", text: "Tinggi permukaan air di dalam bak saat ini adalah 30 cm." }
+          { key: "1", text: "Menjaga jarak mata dengan layar HP sekurang-kurangnya 30 cm." },
+          { key: "2", text: "Mematikan atau meletakkan HP 1 jam sebelum tidur malam." },
+          { key: "3", text: "Mengistirahatkan mata sejenak setelah menatap layar selama 20 menit." },
+          { key: "4", text: "Menatap layar HP terus-menerus selama 4 jam tanpa jeda." }
         ],
-        correct: ["1", "2", "4"],
-        explanation: "Volume penuh = 100 x 50 x 60 = 300.000 cm³ = 300 liter (Pernyataan 1 benar). Karena terisi setengah bagian, volume air = 150 liter (Pernyataan 2 benar) dan tinggi air = 60 : 2 = 30 cm (Pernyataan 4 benar). Tambahan air yang dibutuhkan adalah 150 liter, bukan 200 liter."
+        correct: ["1", "2", "3"],
+        explanation: "Poin 1, 2, dan 3 tercantum secara jelas pada infografis."
       },
       {
         id: 9,
+        subject: "Bahasa Indonesia",
+        type: "single",
+        passageTitle: "Infografis: Bijak Menggunakan Gawai untuk Pelajar",
+        passage: "3. Hentikan penggunaan HP 1 jam sebelum waktu tidur malam.",
+        prompt: "Apa kemungkinan yang terjadi jika seorang siswa tetap bermain HP hingga larut malam tepat sebelum tidur?",
+        options: [
+          { key: "A", text: "Kualitas tidur terganggu sehingga mengantuk saat belajar di madrasah." },
+          { key: "B", text: "Baterai HP menjadi lebih awet keesokan harinya." },
+          { key: "C", text: "Jarak pandang mata otomatis bertambah jauh." },
+          { key: "D", text: "Mata menjadi lebih segar saat bangun pagi." }
+        ],
+        correct: "A",
+        explanation: "Bermain HP tepat sebelum tidur mengurangi waktu istirahat dan membuat siswa mengantuk serta kurang fokus keesokan harinya."
+      },
+      {
+        id: 10,
+        subject: "Bahasa Indonesia",
+        type: "single",
+        passageTitle: "Fenomena Embun Upas di Dataran Tinggi Dieng",
+        passage: "Pada puncak musim kemarau antara bulan Juli hingga Agustus, suhu udara di Dataran Tinggi Dieng, Jawa Tengah, sering turun drastis hingga di bawah nol derajat Celsius pada dini hari. Kondisi ini menyebabkan embun yang menempel pada dedaunan dan rumput membeku menjadi lapisan es tipis berwarna putih.<br><br>Masyarakat setempat menyebut fenomena ini sebagai 'embun upas' yang berarti embun beracun. Disebut demikian karena lapisan es tersebut dapat membuat tanaman kentang milik petani layu, mengering, bahkan mati kedinginan.",
+        prompt: "Mengapa masyarakat Dieng menyebut embun beku tersebut sebagai 'embun upas'?",
+        options: [
+          { key: "A", text: "Karena embun tersebut terasa pahit jika diminum." },
+          { key: "B", text: "Karena lapisan esnya merusak dan mematikan tanaman pertanian warga." },
+          { key: "C", text: "Karena embun hanya muncul saat hujan deras turun." },
+          { key: "D", text: "Karena embun tersebut berasal dari asap kawah gunung." }
+        ],
+        correct: "B",
+        explanation: "Pada paragraf kedua dijelaskan bahwa embun upas berarti embun beracun karena membuat tanaman kentang petani layu, mengering, dan mati."
+      },
+      {
+        id: 11,
+        subject: "Bahasa Indonesia",
+        type: "category",
+        colA: "Benar",
+        colB: "Salah",
+        passageTitle: "Fenomena Embun Upas di Dataran Tinggi Dieng",
+        passage: "Pada puncak musim kemarau antara bulan Juli hingga Agustus, suhu udara di Dataran Tinggi Dieng, Jawa Tengah, sering turun drastis hingga di bawah nol derajat Celsius pada dini hari. Kondisi ini menyebabkan embun yang menempel pada dedaunan dan rumput membeku menjadi lapisan es tipis berwarna putih.",
+        prompt: "Tentukan apakah pernyataan berikut Benar atau Salah berdasarkan bacaan!",
+        statements: [
+          { key: "S1", text: "Embun upas umumnya terjadi pada puncak musim penghujan.", correct: "Salah" },
+          { key: "S2", text: "Suhu udara saat embun upas muncul dapat turun di bawah 0°C.", correct: "Benar" },
+          { key: "S3", text: "Embun upas berbentuk lapisan es tipis berwarna putih di permukaan daun.", correct: "Benar" }
+        ],
+        explanation: "Embun upas terjadi pada puncak musim kemarau (Juli–Agustus), bukan musim penghujan, sehingga S1 Salah, sedangkan S2 dan S3 Benar."
+      },
+      {
+        id: 12,
+        subject: "Bahasa Indonesia",
+        type: "single",
+        passageTitle: "Fenomena Embun Upas di Dataran Tinggi Dieng",
+        passage: "Masyarakat setempat menyebut fenomena ini sebagai 'embun upas' yang berarti embun beracun. Disebut demikian karena lapisan es tersebut dapat membuat tanaman kentang milik petani layu, mengering, bahkan mati kedinginan.",
+        prompt: "Ide pokok paragraf kedua pada bacaan tersebut adalah ....",
+        options: [
+          { key: "A", text: "cara petani menanam kentang di Dieng" },
+          { key: "B", text: "alasan penamaan embun upas dan dampaknya bagi tanaman" },
+          { key: "C", text: "waktu terjadinya musim kemarau di Jawa Tengah" },
+          { key: "D", text: "keindahan pemandangan salju di pagi hari" }
+        ],
+        correct: "B",
+        explanation: "Paragraf kedua membahas asal-usul istilah 'embun upas' serta dampaknya yang mematikan tanaman kentang."
+      },
+      {
+        id: 13,
+        subject: "Bahasa Indonesia",
+        type: "single",
+        prompt: "Perhatikan kalimat berikut: 'pada hari selasa, siswa kelas 6 mipk al ikhlas mengikuti simulasi ujian di semarang.' Penulisan huruf kapital yang tepat sesuai kaidah ejaan adalah ....",
+        options: [
+          { key: "A", text: "Pada hari Selasa, siswa kelas 6 MIPK Al Ikhlas mengikuti simulasi ujian di Semarang." },
+          { key: "B", text: "Pada Hari Selasa, Siswa Kelas 6 MIPK Al Ikhlas mengikuti Simulasi Ujian di Semarang." },
+          { key: "C", text: "Pada hari selasa, siswa kelas 6 MIPK Al Ikhlas mengikuti simulasi ujian di semarang." },
+          { key: "D", text: "Pada hari Selasa, siswa kelas 6 mipk al ikhlas mengikuti simulasi ujian di Semarang." }
+        ],
+        correct: "A",
+        explanation: "Huruf kapital digunakan pada awal kalimat (Pada), nama hari (Selasa), nama lembaga resmi (MIPK Al Ikhlas), dan nama kota (Semarang)."
+      },
+      {
+        id: 14,
+        subject: "Bahasa Indonesia",
+        type: "multiple",
+        prompt: "Manakah kalimat yang menggunakan kata baku bahasa Indonesia dengan tepat? (Pilih semua jawaban yang benar)",
+        options: [
+          { key: "1", text: "Para siswa mengantre dengan tertib sebelum masuk ke ruang ujian." },
+          { key: "2", text: "Jadwal kegiatan tryout sudah ditempel di papan pengumuman." },
+          { key: "3", text: "Ayah membeli obat batuk untuk adik di apotik terdekat." },
+          { key: "4", text: "Setiap peserta wajib membawa ijazah asli saat pendaftaran." }
+        ],
+        correct: ["1", "2", "4"],
+        explanation: "Kata baku yang tepat adalah 'mengantre', 'jadwal', dan 'ijazah'. Pada kalimat 3, kata 'apotik' tidak baku (seharusnya 'apotek')."
+      },
+      {
+        id: 15,
+        subject: "Bahasa Indonesia",
+        type: "single",
+        passageTitle: "Penggalan Teks Pidato Perpisahan Kelas 6",
+        passage: "Teman-teman kelas 6 yang saya banggakan, tidak terasa sebentar lagi kita akan menempuh ujian akhir madrasah. Waktu belajar kita tinggal beberapa bulan lagi. [....] Mari kita kurangi waktu bermain yang tidak perlu dan lebih tekun mengulang pelajaran agar memperoleh hasil terbaik.",
+        prompt: "Kalimat ajakan yang paling tepat untuk melengkapi bagian rumpang pada pidato tersebut adalah ....",
+        options: [
+          { key: "A", text: "Oleh karena itu, kita harus sering berlibur bersama sebelum lulus." },
+          { key: "B", text: "Oleh sebab itu, marilah kita manfaatkan waktu yang tersisa untuk giat belajar." },
+          { key: "C", text: "Dengan demikian, kita tidak perlu lagi mengerjakan tugas dari guru." },
+          { key: "D", text: "Meskipun demikian, ujian akhir bukanlah hal yang penting bagi kita." }
+        ],
+        correct: "B",
+        explanation: "Kalimat B menyambungkan latar belakang waktu ujian yang semakin dekat dengan ajakan untuk tekun belajar."
+      },
+
+      // ================= MATEMATIKA (16 - 30) =================
+      {
+        id: 16,
+        subject: "Matematika",
+        type: "single",
+        prompt: "Harga 1 lusin (12 buah) buku tulis adalah Rp48.000,00, sedangkan harga 1 pak pensil (isi 10 batang) adalah Rp25.000,00. Jika Natasha membeli 3 buah buku tulis dan 2 batang pensil, berapa total uang yang harus dibayar Natasha?",
+        options: [
+          { key: "A", text: "Rp15.000,00" },
+          { key: "B", text: "Rp17.000,00" },
+          { key: "C", text: "Rp19.000,00" },
+          { key: "D", text: "Rp21.000,00" }
+        ],
+        correct: "B",
+        explanation: "Harga 1 buku tulis = Rp48.000 : 12 = Rp4.000. Harga 3 buku = 3 x Rp4.000 = Rp12.000. Harga 1 pensil = Rp25.000 : 10 = Rp2.500. Harga 2 pensil = 2 x Rp2.500 = Rp5.000. Total = Rp12.000 + Rp5.000 = Rp17.000,00."
+      },
+      {
+        id: 17,
+        subject: "Matematika",
+        type: "single",
+        prompt: "Ibu memiliki persediaan 2,5 kg tepung terigu. Sebanyak 1,25 kg tepung digunakan untuk membuat kue bolu. Kemudian Ibu membeli lagi 3/4 kg tepung terigu. Berapa kg persediaan tepung terigu Ibu sekarang?",
+        options: [
+          { key: "A", text: "1,75 kg" },
+          { key: "B", text: "2,00 kg" },
+          { key: "C", text: "2,25 kg" },
+          { key: "D", text: "2,50 kg" }
+        ],
+        correct: "B",
+        explanation: "Ubah 3/4 kg ke bentuk desimal = 0,75 kg. Sisa tepung setelah dipakai = 2,5 - 1,25 = 1,25 kg. Ditambah tepung yang baru dibeli = 1,25 + 0,75 = 2,00 kg."
+      },
+      {
+        id: 18,
+        subject: "Matematika",
+        type: "single",
+        prompt: "Harga sebuah tas ransel adalah Rp150.000,00. Toko memberikan diskon sebesar 30%. Jika ayah membayar dengan 2 lembar uang Rp100.000,00, berapa uang kembalian yang diterima ayah?",
+        options: [
+          { key: "A", text: "Rp45.000,00" },
+          { key: "B", text: "Rp85.000,00" },
+          { key: "C", text: "Rp95.000,00" },
+          { key: "D", text: "Rp105.000,00" }
+        ],
+        correct: "C",
+        explanation: "Besar diskon = 30/100 x Rp150.000 = Rp45.000. Harga setelah diskon = Rp150.000 - Rp45.000 = Rp105.000. Uang ayah = 2 x Rp100.000 = Rp200.000. Kembalian = Rp200.000 - Rp105.000 = Rp95.000,00."
+      },
+      {
+        id: 19,
+        subject: "Matematika",
+        type: "multiple",
+        prompt: "Perbandingan banyak buku cerita Fajar dan Dini adalah 3 : 5. Jumlah buku cerita mereka berdua adalah 40 buku. Pilih semua pernyataan yang benar!",
+        options: [
+          { key: "1", text: "Banyak buku cerita milik Fajar adalah 15 buku." },
+          { key: "2", text: "Banyak buku cerita milik Dini adalah 25 buku." },
+          { key: "3", text: "Selisih buku cerita Fajar dan Dini adalah 15 buku." },
+          { key: "4", text: "Jika Dini memberikan 5 bukunya kepada Fajar, jumlah buku mereka menjadi sama banyak." }
+        ],
+        correct: ["1", "2", "4"],
+        explanation: "Jumlah perbandingan = 3 + 5 = 8. Nilai 1 bagian = 40 : 8 = 5 buku. Buku Fajar = 3 x 5 = 15 buku (1 benar). Buku Dini = 5 x 5 = 25 buku (2 benar). Selisihnya = 25 - 15 = 10 buku (3 salah). Jika Dini memberi 5 buku, masing-masing memiliki 20 buku (4 benar)."
+      },
+      {
+        id: 20,
+        subject: "Matematika",
+        type: "single",
+        prompt: "Lampu taman A menyala setiap 12 detik sekali, lampu B menyala setiap 15 detik sekali, dan lampu C menyala setiap 20 detik sekali. Jika pada pukul 07.00.00 ketiga lampu menyala bersamaan, pada pukul berapakah ketiganya akan menyala bersamaan lagi?",
+        options: [
+          { key: "A", text: "07.00.45" },
+          { key: "B", text: "07.01.00" },
+          { key: "C", text: "07.01.20" },
+          { key: "D", text: "07.02.00" }
+        ],
+        correct: "B",
+        explanation: "Cari KPK dari 12, 15, dan 20. Kelipatan 20: 20, 40, 60 (habis dibagi 12 dan 15). Jadi KPK = 60 detik = 1 menit. Ketiga lampu menyala bersamaan lagi pada pukul 07.00.00 + 1 menit = 07.01.00."
+      },
+      {
+        id: 21,
+        subject: "Matematika",
+        type: "single",
+        prompt: "Panitia bakti sosial madrasah menyiapkan 48 bungkus beras dan 72 botol minyak goreng. Kedua barang tersebut akan dikemas ke dalam paket sebanyak-banyaknya dengan jumlah dan jenis yang sama rata. Berapa banyak bungkus beras dalam setiap paket?",
+        options: [
+          { key: "A", text: "2 bungkus" },
+          { key: "B", text: "3 bungkus" },
+          { key: "C", text: "12 bungkus" },
+          { key: "D", text: "24 bungkus" }
+        ],
+        correct: "A",
+        explanation: "Cari FPB dari 48 dan 72. FPB(48, 72) = 24 (artinya terbentuk 24 paket). Banyak bungkus beras per paket = 48 : 24 = 2 bungkus."
+      },
+      {
+        id: 22,
+        subject: "Matematika",
+        type: "category",
+        colA: "Benar",
+        colB: "Salah",
+        prompt: "Tentukan apakah pernyataan mengenai sifat bangun datar berikut Benar atau Salah!",
+        statements: [
+          { key: "S1", text: "Semua sisi pada bangun belah ketupat memiliki panjang yang sama.", correct: "Benar" },
+          { key: "S2", text: "Trapesium sama kaki memiliki dua pasang sisi yang sejajar.", correct: "Salah" },
+          { key: "S3", text: "Keempat sudut pada persegi panjang merupakan sudut siku-siku (90°).", correct: "Benar" }
+        ],
+        explanation: "S1 Benar (belah ketupat memiliki 4 sisi sama panjang). S2 Salah karena trapesium hanya memiliki 1 pasang sisi sejajar. S3 Benar."
+      },
+      {
+        id: 23,
+        subject: "Matematika",
+        type: "single",
+        prompt: "Sebuah taman berbentuk persegi panjang berukuran panjang 18 meter dan lebar 12 meter. Di sekeliling taman tersebut akan dipasang pagar kawat satu putaran. Berapa meter panjang kawat yang dibutuhkan?",
+        options: [
+          { key: "A", text: "30 meter" },
+          { key: "B", text: "60 meter" },
+          { key: "C", text: "108 meter" },
+          { key: "D", text: "216 meter" }
+        ],
+        correct: "B",
+        explanation: "Panjang pagar mengelilingi taman = Keliling persegi panjang = 2 x (panjang + lebar) = 2 x (18 + 12) = 2 x 30 = 60 meter."
+      },
+      {
+        id: 24,
+        subject: "Matematika",
+        type: "multiple",
+        prompt: "Sebuah akuarium berbentuk balok memiliki panjang 80 cm, lebar 40 cm, dan tinggi 50 cm. Akuarium tersebut diisi air hingga ketinggian 30 cm. Pilih semua pernyataan yang benar! (1 liter = 1.000 cm³)",
+        options: [
+          { key: "1", text: "Kapasitas maksimal akuarium jika terisi penuh adalah 160 liter." },
+          { key: "2", text: "Volume air yang ada di dalam akuarium saat ini adalah 96 liter." },
+          { key: "3", text: "Dibutuhkan tambahan 64 liter air agar akuarium terisi penuh." },
+          { key: "4", text: "Akuarium tersebut saat ini terisi air tepat setengah bagian." }
+        ],
+        correct: ["1", "2", "3"],
+        explanation: "Volume penuh = 80 x 40 x 50 = 160.000 cm³ = 160 liter (1 benar). Volume air = 80 x 40 x 30 = 96.000 cm³ = 96 liter (2 benar). Kekurangan air = 160 - 96 = 64 liter (3 benar). Pernyataan 4 salah karena setengah tinggi 50 cm adalah 25 cm, sedangkan tinggi air 30 cm."
+      },
+      {
+        id: 25,
+        subject: "Matematika",
+        type: "single",
+        prompt: "Sebuah kotak kado berbentuk kubus memiliki panjang rusuk 20 cm. Seluruh permukaan luar kotak kado tersebut akan dilapisi kertas kado. Berapa luas minimal kertas kado yang diperlukan?",
+        options: [
+          { key: "A", text: "400 cm²" },
+          { key: "B", text: "1.200 cm²" },
+          { key: "C", text: "2.400 cm²" },
+          { key: "D", text: "8.000 cm²" }
+        ],
+        correct: "C",
+        explanation: "Luas permukaan kubus = 6 x sisi x sisi = 6 x 20 x 20 = 6 x 400 = 2.400 cm²."
+      },
+      {
+        id: 26,
+        subject: "Matematika",
+        type: "single",
+        prompt: "Jarak kota Semarang ke Salatiga adalah 48 km. Sebuah bus berangkat dari Semarang pukul 08.15 WIB dengan kecepatan rata-rata 60 km/jam. Pada pukul berapakah bus tersebut tiba di Salatiga?",
+        options: [
+          { key: "A", text: "08.55 WIB" },
+          { key: "B", text: "09.00 WIB" },
+          { key: "C", text: "09.03 WIB" },
+          { key: "D", text: "09.15 WIB" }
+        ],
+        correct: "C",
+        explanation: "Waktu tempuh = Jarak : Kecepatan = 48 : 60 jam = 4/5 jam = 48 menit. Waktu tiba = 08.15 + 48 menit = pukul 09.03 WIB."
+      },
+      {
+        id: 27,
+        subject: "Matematika",
+        type: "single",
+        prompt: "Sebuah keran mengalirkan air dengan debit 15 liter/menit. Jika keran tersebut digunakan untuk mengisi tandon kosong hingga terisi 300 liter air, berapa lama waktu yang dibutuhkan?",
+        options: [
+          { key: "A", text: "15 menit" },
+          { key: "B", text: "20 menit" },
+          { key: "C", text: "25 menit" },
+          { key: "D", text: "30 menit" }
+        ],
+        correct: "B",
+        explanation: "Waktu = Volume : Debit = 300 liter : 15 liter/menit = 20 menit."
+      },
+      {
+        id: 28,
         subject: "Matematika",
         type: "category",
         colA: "Sesuai",
         colB: "Tidak Sesuai",
-        passageTitle: "Data Peminjaman Buku Perpustakaan MIPK",
-        passage: "• Hari Senin : 25 buku<br>• Hari Selasa : 30 buku<br>• Hari Rabu : 20 buku<br>• Hari Kamis : 35 buku",
-        prompt: "Perhatikan data jumlah peminjaman buku di atas. Tentukan Sesuai atau Tidak Sesuai untuk setiap pernyataan berikut!",
+        passageTitle: "Data Peserta Ekstrakurikuler Kelas 6",
+        passage: "• Pramuka : 28 siswa<br/>• Hadroh : 16 siswa<br/>• Panahan : 12 siswa<br/>• Kaligrafi : 14 siswa",
+        prompt: "Perhatikan data peserta ekstrakurikuler di atas. Tentukan Sesuai atau Tidak Sesuai untuk setiap pernyataan berikut!",
         statements: [
-          { key: "S1", text: "Selisih peminjaman buku terbanyak dan tersedikit adalah 15 buku.", correct: "Sesuai" },
-          { key: "S2", text: "Total buku yang dipinjam selama empat hari adalah 100 buku.", correct: "Tidak Sesuai" },
-          { key: "S3", text: "Peminjaman buku pada hari Kamis meningkat 15 buku dibanding hari Rabu.", correct: "Sesuai" }
+          { key: "S1", text: "Jumlah seluruh peserta dari keempat ekstrakurikuler adalah 70 siswa.", correct: "Sesuai" },
+          { key: "S2", text: "Selisih peserta Pramuka dan Panahan adalah 14 siswa.", correct: "Tidak Sesuai" },
+          { key: "S3", text: "Peserta Hadroh lebih banyak daripada peserta Kaligrafi.", correct: "Sesuai" }
         ],
-        explanation: "Total buku = 25 + 30 + 20 + 35 = 110 buku (sehingga pernyataan 2 Tidak Sesuai). Peminjaman terbanyak pada Kamis (35) dan tersedikit pada Rabu (20), selisihnya 35 - 20 = 15 buku."
+        explanation: "Total = 28 + 16 + 12 + 14 = 70 siswa (S1 Sesuai). Selisih Pramuka dan Panahan = 28 - 12 = 16 siswa, bukan 14 (S2 Tidak Sesuai). Hadroh (16) > Kaligrafi (14) (S3 Sesuai)."
       },
       {
-        id: 10,
+        id: 29,
         subject: "Matematika",
         type: "single",
-        prompt: "Ayah mengantar Aisyah berangkat ke madrasah yang berjarak 9 km dari rumah dengan kecepatan rata-rata 36 km/jam. Jika mereka berangkat pukul 06.25 WIB, pada pukul berapakah mereka tiba di madrasah?",
+        prompt: "Nilai ulangan harian Matematika Natasha dalam 4 kali tes adalah 80, 85, 75, dan 100. Berapa rata-rata (mean) nilai ulangan Matematika Natasha?",
         options: [
-          { key: "A", text: "06.35 WIB" },
-          { key: "B", text: "06.40 WIB" },
-          { key: "C", text: "06.45 WIB" },
-          { key: "D", text: "06.50 WIB" }
+          { key: "A", text: "80" },
+          { key: "B", text: "82,5" },
+          { key: "C", text: "85" },
+          { key: "D", text: "87,5" }
         ],
-        correct: "B",
-        explanation: "Waktu tempuh = Jarak : Kecepatan = 9 km : 36 km/jam = 1/4 jam = 15 menit. Tiba di madrasah = 06.25 + 15 menit = 06.40 WIB."
+        correct: "C",
+        explanation: "Jumlah seluruh nilai = 80 + 85 + 75 + 100 = 340. Rata-rata = 340 : 4 = 85."
+      },
+      {
+        id: 30,
+        subject: "Matematika",
+        type: "multiple",
+        prompt: "Dari 40 siswa kelas 6, diketahui data olahraga kegemaran: Sepak Bola 40%, Bulu Tangkis 25%, Renang 20%, dan sisanya Tenis Meja. Pilih semua pernyataan yang benar!",
+        options: [
+          { key: "1", text: "Banyak siswa yang gemar Sepak Bola adalah 16 siswa." },
+          { key: "2", text: "Persentase siswa yang gemar Tenis Meja adalah 15%." },
+          { key: "3", text: "Banyak siswa yang gemar Bulu Tangkis adalah 12 siswa." },
+          { key: "4", text: "Selisih siswa yang gemar Renang dan Tenis Meja adalah 2 siswa." }
+        ],
+        correct: ["1", "2", "4"],
+        explanation: "Persentase Tenis Meja = 100% - (40% + 25% + 20%) = 15% (2 benar). Sepak Bola = 40% x 40 = 16 siswa (1 benar). Bulu Tangkis = 25% x 40 = 10 siswa (3 salah). Renang = 20% x 40 = 8 siswa dan Tenis Meja = 15% x 40 = 6 siswa, selisihnya 8 - 6 = 2 siswa (4 benar)."
       }
     ];
 
     let currentIdx = 0;
     let answers = {};
     let flags = {};
-    let timeLeft = 20 * 60; // 20 menit
+    let timeLeft = 60 * 60; // 60 menit
     let timerInterval = null;
+    let currentFilter = "all";
 
     function togglePassword() {
       const pwInput = document.getElementById("inputPassword");
@@ -1096,7 +1496,7 @@
       currentIdx = 0;
       answers = {};
       flags = {};
-      timeLeft = 20 * 60;
+      timeLeft = 60 * 60;
 
       document.getElementById("headerRight").classList.remove("hidden");
       document.getElementById("examBottomNav").classList.remove("hidden");
@@ -1127,7 +1527,7 @@
       const secs = Math.max(0, timeLeft) % 60;
       const badge = document.getElementById("timerDisplay");
       badge.textContent = `${String(mins).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
-      if (timeLeft <= 180) {
+      if (timeLeft <= 300) {
         badge.classList.add("urgent");
       } else {
         badge.classList.remove("urgent");
@@ -1145,7 +1545,14 @@
     function renderQuestion() {
       const q = QUESTIONS[currentIdx];
       document.getElementById("qNumberBadge").textContent = `Soal No. ${currentIdx + 1} / ${QUESTIONS.length}`;
-      document.getElementById("qSubjectBadge").textContent = q.subject;
+
+      const subBadge = document.getElementById("qSubjectBadge");
+      subBadge.textContent = q.subject;
+      if (q.subject === "Matematika") {
+        subBadge.classList.add("math");
+      } else {
+        subBadge.classList.remove("math");
+      }
 
       // Type Banner
       const typeBanner = document.getElementById("qTypeBanner");
@@ -1321,8 +1728,11 @@
     }
 
     function openGridModal() {
-      const grid = document.getElementById("questionGrid");
-      grid.innerHTML = "";
+      const gridIndo = document.getElementById("questionGridIndo");
+      const gridMath = document.getElementById("questionGridMath");
+      gridIndo.innerHTML = "";
+      gridMath.innerHTML = "";
+
       QUESTIONS.forEach((q, idx) => {
         const btn = document.createElement("button");
         btn.type = "button";
@@ -1341,7 +1751,12 @@
           closeGridModal();
           renderQuestion();
         };
-        grid.appendChild(btn);
+
+        if (q.subject === "Bahasa Indonesia") {
+          gridIndo.appendChild(btn);
+        } else {
+          gridMath.appendChild(btn);
+        }
       });
       document.getElementById("gridModal").classList.remove("hidden");
     }
@@ -1354,9 +1769,18 @@
       closeGridModal();
       const answeredCount = QUESTIONS.filter(q => isQuestionAnswered(q)).length;
       const unansweredCount = QUESTIONS.length - answeredCount;
-      const text = unansweredCount > 0
-        ? `Kamu sudah menjawab ${answeredCount} dari ${QUESTIONS.length} soal (masih ada ${unansweredCount} soal belum lengkap). Yakin ingin mengumpulkan jawaban sekarang?`
-        : `Semua soal (${QUESTIONS.length} dari ${QUESTIONS.length}) sudah dijawab. Apakah kamu yakin ingin mengumpulkan jawaban dan melihat nilainya?`;
+      const flaggedCount = Object.values(flags).filter(Boolean).length;
+
+      let text = "";
+      if (unansweredCount > 0 || flaggedCount > 0) {
+        text = `Natasha sudah menjawab lengkap ${answeredCount} dari ${QUESTIONS.length} soal`;
+        if (unansweredCount > 0) text += ` (${unansweredCount} soal masih kosong/belum lengkap)`;
+        if (flaggedCount > 0) text += ` dan masih ada ${flaggedCount} soal bertanda ragu-ragu`;
+        text += `. Yakin ingin mengumpulkan jawaban sekarang?`;
+      } else {
+        text = `Semua soal (${QUESTIONS.length} dari ${QUESTIONS.length}) sudah dijawab lengkap! Apakah Natasha yakin ingin mengumpulkan jawaban dan melihat nilainya?`;
+      }
+
       document.getElementById("submitSummaryText").textContent = text;
       document.getElementById("submitModal").classList.remove("hidden");
     }
@@ -1385,7 +1809,7 @@
         const hasWrong = ans.some(k => !q.correct.includes(k));
         if (hasWrong) return 0;
         if (ans.length === q.correct.length) return 10;
-        return 5; // Sebagian benar tanpa pilihan salah
+        return 5;
       }
 
       if (q.type === "category") {
@@ -1401,26 +1825,32 @@
       return 0;
     }
 
-    function finishExam() {
-      clearInterval(timerInterval);
-      closeSubmitModal();
-      closeGridModal();
-      document.getElementById("headerRight").classList.add("hidden");
-      document.getElementById("examBottomNav").classList.add("hidden");
+    function setReviewFilter(filterType, activeBtnId) {
+      currentFilter = filterType;
+      ["filterAll", "filterWrong", "filterMath"].forEach(id => {
+        document.getElementById(id).classList.remove("active");
+      });
+      document.getElementById(activeBtnId).classList.add("active");
+      renderReviewList();
+    }
 
-      let totalScore = 0;
-      let indoScore = 0;
-      let mathScore = 0;
-
+    function renderReviewList() {
       const reviewContainer = document.getElementById("reviewContainer");
       reviewContainer.innerHTML = "";
 
-      QUESTIONS.forEach((q, idx) => {
-        const pts = evaluateQuestion(q);
-        totalScore += pts;
-        if (q.subject === "Bahasa Indonesia") indoScore += pts;
-        else mathScore += pts;
+      const filtered = QUESTIONS.map((q, idx) => ({ q, idx, pts: evaluateQuestion(q) }))
+        .filter(item => {
+          if (currentFilter === "wrong") return item.pts < 10;
+          if (currentFilter === "math") return item.q.subject === "Matematika";
+          return true;
+        });
 
+      if (filtered.length === 0) {
+        reviewContainer.innerHTML = `<div style="text-align:center; padding:20px; color:var(--primary); font-weight:600;">MasyaAllah, tidak ada soal yang keliru pada kategori ini!</div>`;
+        return;
+      }
+
+      filtered.forEach(({ q, idx, pts }) => {
         let badgeClass = "badge-wrong";
         let badgeLabel = `Belum Tepat (${pts}/10 poin)`;
         if (pts === 10) {
@@ -1431,7 +1861,6 @@
           badgeLabel = `Sebagian Benar (${pts}/10 poin)`;
         }
 
-        // Format user answer & correct answer text
         let userAnsText = "Tidak dijawab";
         let correctAnsText = "";
 
@@ -1465,24 +1894,54 @@
             <span class="badge-status ${badgeClass}">${badgeLabel}</span>
           </div>
           <div style="font-size:13.5px; margin-bottom:8px; font-weight:600;">${q.prompt}</div>
-          <div style="font-size:12.5px; color:#475569; margin-bottom:4px;"><strong>Jawabanmu:</strong> ${userAnsText}</div>
+          <div style="font-size:12.5px; color:#475569; margin-bottom:4px;"><strong>Jawaban Natasha:</strong> ${userAnsText}</div>
           <div style="font-size:12.5px; color:#0f5132;"><strong>Kunci Jawaban:</strong> ${correctAnsText}</div>
           <div class="explanation-box"><strong>Pembahasan:</strong> ${q.explanation}</div>
         `;
         reviewContainer.appendChild(item);
       });
+    }
 
-      document.getElementById("finalScoreText").textContent = totalScore;
-      document.getElementById("scoreIndoText").textContent = `${indoScore} / 50`;
-      document.getElementById("scoreMathText").textContent = `${mathScore} / 50`;
+    function finishExam() {
+      clearInterval(timerInterval);
+      closeSubmitModal();
+      closeGridModal();
+      document.getElementById("headerRight").classList.add("hidden");
+      document.getElementById("examBottomNav").classList.add("hidden");
 
-      let feedback = "Tetap semangat! Pelajari pembahasan di bawah untuk persiapan besok.";
-      if (totalScore >= 85) {
-        feedback = "MasyaAllah, Luar Biasa! Kamu sudah sangat siap menghadapi Simulasi TKA.";
-      } else if (totalScore >= 70) {
-        feedback = "Bagus Sekali! Tinggal periksa sedikit bagian yang masih keliru di bawah.";
+      let totalRaw = 0;
+      let indoRaw = 0;
+      let mathRaw = 0;
+
+      QUESTIONS.forEach(q => {
+        const pts = evaluateQuestion(q);
+        totalRaw += pts;
+        if (q.subject === "Bahasa Indonesia") indoRaw += pts;
+        else mathRaw += pts;
+      });
+
+      const finalScore100 = Math.round((totalRaw / 300) * 100);
+      const indoScore100 = Math.round((indoRaw / 150) * 100);
+      const mathScore100 = Math.round((mathRaw / 150) * 100);
+
+      document.getElementById("finalScoreText").textContent = finalScore100;
+      document.getElementById("scoreIndoText").textContent = indoScore100;
+      document.getElementById("subIndoText").textContent = `Skor ${indoRaw} / 150 poin`;
+      document.getElementById("scoreMathText").textContent = mathScore100;
+      document.getElementById("subMathText").textContent = `Skor ${mathRaw} / 150 poin`;
+
+      let feedback = "Tetap semangat Natasha! Gunakan tombol filter di bawah untuk mempelajari pembahasan soal yang belum sempurna.";
+      if (finalScore100 >= 85) {
+        feedback = "MasyaAllah, Luar Biasa Natasha! Hasilmu sudah sangat siap untuk Simulasi TKA besok.";
+      } else if (finalScore100 >= 70) {
+        feedback = "Bagus Sekali Natasha! Tinggal pelajari sedikit pembahasan pada soal yang masih keliru di bawah.";
       }
       document.getElementById("scoreFeedbackText").textContent = feedback;
+
+      currentFilter = "all";
+      ["filterAll", "filterWrong", "filterMath"].forEach(id => document.getElementById(id).classList.remove("active"));
+      document.getElementById("filterAll").classList.add("active");
+      renderReviewList();
 
       showScreen("screenResult");
     }
